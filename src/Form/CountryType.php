@@ -2,29 +2,20 @@
 
 namespace App\Form;
 
-use App\Entity\City;
 use App\Entity\Country;
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class CityType extends AbstractType
+class CountryType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name')
-//            ->add('description', CKEditorType::class, array(
-//                'config' => array(
-//                    'uiColor' => '#ffffff',
-//                )
-            ->add('link')
-            ->add('country', EntityType::class, array(
-                'class'   => Country::class,
-            ))
+            ->add('description')
+            ->add('flag')
             ->add('submit', SubmitType::class, [
                 'label' => 'Create'
             ])
@@ -34,7 +25,7 @@ class CityType extends AbstractType
     public function configureOptions(OptionsResolver $resolver): void
     {
         $resolver->setDefaults([
-            'data_class' => City::class,
+            'data_class' => Country::class,
         ]);
     }
 }

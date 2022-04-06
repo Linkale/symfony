@@ -1,6 +1,6 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CityController!{% endblock %}
+{% block title %}Hello CountryController!{% endblock %}
 
 {% block body %}
     <style>
@@ -20,14 +20,14 @@
     <div class="example-wrapper">
         <h1>Hello ! ✅</h1>
 
-        <a href="{{ path('new_city') }}">Ajouter</a>
+        <a href="{{ path('new_country') }}">Ajouter</a>
 
-        {% if cities is empty %}
-            <p>Aucune ville</p>
+        {% if countries is empty %}
+            <p>Aucune pays</p>
         {% else %}
             <ul>
-                {% for city in cities %}
-                    <li><a href="{{ path('city', {cityName: city.name}) }}">{{ city.name | upper }}</a></li>
+                {% for country in countries %}
+                    <li><a href="{{ path('country', {countryName: country.name}) }}">{{ country.name | upper }}</a></li>
                 {% endfor %}
             </ul>
         {% endif %}
