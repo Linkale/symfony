@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\City;
 use App\Entity\Country;
+use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\CollectionType;
@@ -17,18 +18,14 @@ class CityType extends AbstractType
     {
         $builder
             ->add('name')
-//            ->add('description', CKEditorType::class, array(
-//                'config' => array(
-//                    'uiColor' => '#ffffff',
-//                )
+            ->add('description', CKEditorType::class)
             ->add('link')
             ->add('country', EntityType::class, array(
-                'class'   => Country::class,
+                'class' => Country::class,
             ))
             ->add('submit', SubmitType::class, [
                 'label' => 'Create'
-            ])
-        ;
+            ]);
     }
 
     public function configureOptions(OptionsResolver $resolver): void
